@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /404.html
+Disallow: /amp
+
+User-agent: Googlebot
+Allow: /amp
+Host: https://a-raskatov.github.io
+Sitemap: https://a-raskatov.github.io/sitemap.xml
+

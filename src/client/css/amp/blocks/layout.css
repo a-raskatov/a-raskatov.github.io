@@ -1,0 +1,39 @@
+.layout {
+	box-sizing: border-box;
+	max-width: 928px;
+	min-height: 100dvh;
+	margin-inline: auto;
+	padding: 108px 24px 84px;
+	background-color: var(--color-paper);
+	background-image: linear-gradient(transparent 47px, #00008026 48px);
+	background-size: 48px 48px;
+}
+
+.layout__header {
+	display: none;
+}
+
+.layout__author {
+	margin: 0 0 48px;
+	font-style: normal;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.layout {
+		padding-inline: 48px;
+		box-shadow: 0 1px 4px #0000005e;
+	}
+}
+
+@media print {
+	.layout {
+		padding: 0;
+		background: none;
+		box-shadow: none;
+	}
+
+	.layout__footer {
+		display: none;
+	}
+}

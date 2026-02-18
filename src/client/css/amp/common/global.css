@@ -1,0 +1,59 @@
+html {
+	--color-links: #0069ff;
+	--color-sticky-green: #b8e6b3;
+	--color-sticky-yellow: #fdfd96;
+	--color-text: #0d0d86;
+	--font-sans-serif: "TT Polls", sans-serif;
+	--icon-toc: url("../../../icons/toc.svg");
+
+	font-size: 32px;
+}
+
+body {
+	min-width: 320px;
+	overflow: hidden scroll;
+	scroll-behavior: var(--scroll-behavior);
+	-webkit-overflow-scrolling: touch;
+}
+
+h1 {
+	position: fixed;
+	transform: scale(0);
+}
+
+h2 {
+	margin: 0 0 48px;
+	scroll-margin-top: 2.5rem;
+	font-size: 40px;
+	line-height: inherit;
+	transform: translateY(-2px);
+}
+
+a {
+	text-decoration-thickness: from-font;
+	color: inherit;
+	transition-property: color;
+}
+
+@media (hover: hover) {
+	a:hover {
+		color: var(--color-links);
+	}
+}
+
+@media (min-width: 928px) {
+	body {
+		background-color: #76726e;
+		background-image: url("/images/back.webp");
+		background-attachment: fixed;
+	}
+}
+
+@media print {
+	body {
+		--color-text: #000000;
+		--color-links: #000000;
+
+		background: none;
+	}
+}
