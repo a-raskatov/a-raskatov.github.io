@@ -9,7 +9,7 @@ export const PROJECT_TITLE = "Произведения Андрея Раскат
 export const YANDEX_METRIKA_ID = 103961970;
 
 export const version = {
-	CSS: 2,
+	CSS: 3,
 };
 
 export const HEADINGS = {

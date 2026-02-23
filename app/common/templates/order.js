@@ -1,7 +1,8 @@
 export const ORDER_TEMPLATE = /* html */ `
 	<div class="content content--centered _separated-lg">
-		<a class="text-link" href="https://t.me/efiand_bot" target="_blank" rel="noopener noreferrer">
+		<a class="text-link" href="https://efiand.ru/order" target="_blank">
 			Хочу литературный сайт!
-		</a>
+		</a><br>
+		Бесплатная акция ещё действует!
 	</div>
 `;
