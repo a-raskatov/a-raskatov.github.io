@@ -30,12 +30,12 @@ function renderUrlMeta(pathname = "", isAmp = false) {
 	}
 
 	const page = pathname === "/" ? "/" : `${pathname}/`;
-	const ampTemplate = isAmp ? "" : /* html */ `<link rel="ampurl" href="${BASE_URL}/amp${page}">`;
+	const ampUrl = `/amp${page}`;
 
 	return /* html */ `
-		${ampTemplate}
+		<meta property="og:url" content="${BASE_URL}${isAmp ? ampUrl : page}">
+		${isAmp ? "" : /* html */ `<link rel="ampurl" href="${BASE_URL}${ampUrl}">`}
 		<link rel="canonical" href="${BASE_URL}${page}">
-		<meta property="og:url" content="${page}">
 	`;
 }
 
@@ -53,9 +53,16 @@ export async function renderPage({
 	const assetsTemplate = isAmp ? await renderAmpAssets() : renderAssets();
 	const hyphenatedPageTemplate = await hyphenateRu(pageTemplate);
 
+	/** @type {{ ns: string; type: string }[]} */
+	const prefixes = [{ ns: "", type: "og" }];
+	if (pathname.startsWith("/mad") || pathname.startsWith("/dabt")) {
+		prefixes.push({ ns: "/article", type: "article" });
+	}
+	const prefixValue = prefixes.map(({ ns, type }) => `${type}: http://ogp.me/ns${ns}#`).join(" ");
+
 	return /* html */ `
 		<!DOCTYPE html>
-		<html lang="ru" prefix="og: http://ogp.me/ns#" ${isAmp ? "⚡" : ""}>
+		<html lang="ru" prefix="${prefixValue}" ${isAmp ? "⚡" : ""}>
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +76,6 @@ export async function renderPage({
 			<meta property="og:title" content="${title}">
 			<meta property="og:description" content="${description}">
 			<meta property="og:locale" content="ru_RU">
-			<meta property="og:type" content="website">
 			<meta property="og:site_name" content="${PROJECT_TITLE}">
 			<meta property="og:image" content="${ampPrefix}/web-app-manifest-512x512.png">
 			<meta property="og:image:width" content="512">

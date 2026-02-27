@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
-import { HEADINGS } from "#common/constants.js";
+import { BOOKS, WORK_DATA } from "#common/constants.js";
+import { renderSchema } from "#common/templates/schema.js";
 import { cwd } from "#server/constants.js";
-import { WORK_DATA } from "#server/data/pages.js";
 
 /** @type {Record<string, string>} */
 const cache = {};
@@ -17,7 +17,8 @@ export async function getWorkPage(book, id, description) {
 
 	return {
 		description: `${description} «${title}».`,
-		heading: HEADINGS[book],
+		heading: BOOKS[book],
+		headTemplate: renderSchema(book, id),
 		pageTemplate: /* html */ `
 			<h2>${title}</h2>
 			<div class="content content--${book === "mad" ? "poem" : "prose"}">

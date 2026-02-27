@@ -1,5 +1,4 @@
-import { HEADINGS } from "#common/constants.js";
-import { WORK_DATA } from "#server/data/pages.js";
+import { BOOKS, WORK_DATA } from "#common/constants.js";
 
 /** @type {(payload: { ampPrefix?: string; pathname?: string; }) => string} */
 export function renderNavRing({ ampPrefix = "", pathname = "" }) {
@@ -9,7 +8,7 @@ export function renderNavRing({ ampPrefix = "", pathname = "" }) {
 	let prev = "/dabt/3";
 	let hash = "";
 
-	if (HEADINGS[book]) {
+	if (BOOKS[book]) {
 		/** @type {Book} */
 		const anotherBook = book === "mad" ? "dabt" : "mad";
 

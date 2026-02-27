@@ -1,5 +1,3 @@
-import { WORK_PAGES } from "#server/data/pages.js";
-
 export const BASE_URL = "https://a-raskatov.github.io";
 
 export const AUTHOR = "Андрей Раскатов";
@@ -12,10 +10,60 @@ export const version = {
 	CSS: 3,
 };
 
-export const HEADINGS = {
+/** @type {Record<Book, string>} */
+export const BOOKS = {
 	dabt: "Сказки о деде Андрее и бабке Тане",
 	mad: "Стихотворения",
 };
+
+export const WORK_DATA = {
+	dabt: [
+		{ date: "1997-03-10", title: "Несостоявшаяся свадьба" },
+		{ date: "1997-03-16", title: "Водка и её последствия" },
+		{ date: "1997-03-10", title: "Сказка о поросёнке" },
+	],
+	mad: [
+		{ date: "1994-10-25", title: "Петя в гостях" },
+		{ date: "1997-10-15", title: "Басня про лень" },
+		{ date: "1998-04-20", title: "Весна во дворе" },
+		{ date: "1998-04-22", title: "Весеннее настроение" },
+		{ date: "1999-05-19", title: "Ясень" },
+		{ date: "1999-11-18", title: "Ночной монолог" },
+		{ date: "2000-12-08", title: "Монолог на дереве" },
+		{ date: "2000-12-17", title: "О Пушкине и рыбке" },
+		{ date: "2002-07-12", title: "Головная боль" },
+		{ date: "2003-04-02", title: "Вечернее вдохновение" },
+		{ date: "2003-04-10", title: "О пользе лекарства" },
+		{ date: "2003-04-22", title: "Рисунок Весны" },
+		{ date: "2003-10-06", title: "Красавица Небес" },
+		{ date: "2005-10-14", title: "Осенняя печаль" },
+		{ date: "2005-12-06", title: "Прощу и забуду" },
+		{ date: "2005-12-25", title: "Свет творчества" },
+		{ date: "2006-01-26", title: "Гремучая смесь" },
+		{ date: "2006-10-03", title: "Под негромкий плач рояля" },
+		{ date: "2007-09-25", title: "Осень в нас" },
+		{ date: "2007-10-02", title: "Безнадёга" },
+		{ date: "2007-10-02", title: "Осенний пессимизм" },
+		{ date: "2008-04-08", title: "Обывателям" },
+		{ date: "2008-04-12", title: "Просто живи" },
+		{ date: "2008-06-14", title: "Первый экзамен" },
+		{ date: "2008-10-07", title: "Птицы счастья" },
+		{ date: "2008-10-07", title: "Не от мира сего" },
+		{ date: "2011-05-08", title: "После грозы" },
+		{ date: "2011-05-08", title: "Прощание с летом" },
+		{ date: "2021-10-18", title: "Мотивация" },
+	],
+};
+
+export const WORK_PAGES = Object.entries(WORK_DATA).flatMap(([book, works]) =>
+	works.map((_work, i) => `/${book}/${i + 1}`),
+);
+
+export const AMP_PAGES = ["/amp", ...WORK_PAGES.map((page) => `/amp${page}`)];
+
+export const STATIC_PAGES = ["/", "/404.html", ...WORK_PAGES];
+
+export const PUB_DATE = new Date().toISOString();
 
 /** @type {Record<string, string>} */
 export const STATIC_MIME_TYPES = {
@@ -31,7 +79,3 @@ export const STATIC_MIME_TYPES = {
 };
 
 export const staticExtensions = new Set(Object.keys(STATIC_MIME_TYPES));
-
-export const AMP_PAGES = ["/amp", ...WORK_PAGES.map((page) => `/amp${page}`)];
-
-export const STATIC_PAGES = ["/", "/404.html", ...WORK_PAGES];
