@@ -1,5 +1,5 @@
 declare global {
-	type Book = "dabt" | "mad";
+	type Book = 'dabt' | 'mad';
 
 	type DataItem = {
 		date?: string;

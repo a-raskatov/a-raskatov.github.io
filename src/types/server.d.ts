@@ -1,8 +1,8 @@
 declare global {
-	import type { IncomingMessage, ServerResponse } from "node:http";
+	import type { IncomingMessage, ServerResponse } from 'node:http';
 
 	type Route = {
-		[method: IncomingMessage["method"]]: RouteMethod;
+		[method: IncomingMessage['method']]: RouteMethod;
 	};
 
 	type RouteData = {

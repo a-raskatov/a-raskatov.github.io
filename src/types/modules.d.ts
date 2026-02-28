@@ -1,4 +1,4 @@
-declare module "hyphen/ru/index.js" {
+declare module 'hyphen/ru/index.js' {
 	export type HyphenateOptions = {
 		exceptions?: string[];
 		hyphenChar?: string;

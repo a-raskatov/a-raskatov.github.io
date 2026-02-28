@@ -1,45 +1,45 @@
-import { AUTHOR, BASE_URL, BOOKS, PUB_DATE, WORK_DATA } from "#common/constants.js";
+import { AUTHOR, BASE_URL, BOOKS, PUB_DATE, WORK_DATA } from '#common/constants.js';
 
 /** @type {Book[]} */
-const books = ["dabt", "mad"];
+const books = ['dabt', 'mad'];
 
 const authorId = `${BASE_URL}/#author`;
 const siteId = `${BASE_URL}/#website`;
 
 const author = {
-	"@id": authorId,
-	"@type": "Person",
+	'@id': authorId,
+	'@type': 'Person',
 	name: AUTHOR,
 	url: `${BASE_URL}/`,
-	worksFor: { "@id": siteId },
+	worksFor: { '@id': siteId },
 };
 
 const graph = {
-	"@graph": [
+	'@graph': [
 		{
-			"@id": siteId,
-			"@type": "WebSite",
-			inLanguage: "ru",
-			name: "Произведения Андрея Раскатова",
-			publisher: { "@id": authorId },
+			'@id': siteId,
+			'@type': 'WebSite',
+			inLanguage: 'ru',
+			name: 'Произведения Андрея Раскатова',
+			publisher: { '@id': authorId },
 			url: `${BASE_URL}/`,
 		},
 		{
-			"@id": `${BASE_URL}/#webpage`,
-			"@type": "WebPage",
-			about: { "@id": authorId },
-			inLanguage: "ru",
-			isPartOf: { "@id": siteId },
-			name: "Андрей Раскатов | Произведения Андрея Раскатова",
+			'@id': `${BASE_URL}/#webpage`,
+			'@type': 'WebPage',
+			about: { '@id': authorId },
+			inLanguage: 'ru',
+			isPartOf: { '@id': siteId },
+			name: 'Андрей Раскатов | Произведения Андрея Раскатова',
 			url: `${BASE_URL}/`,
 		},
 		author,
 		...books.map((book) => {
 			const id = `${BASE_URL}/#${book}`;
 			return {
-				"@id": id,
-				"@type": "CreativeWorkSeries",
-				author: { "@id": authorId },
+				'@id': id,
+				'@type': 'CreativeWorkSeries',
+				author: { '@id': authorId },
 				name: BOOKS[book],
 				url: id,
 			};
@@ -49,7 +49,7 @@ const graph = {
 
 /** @type {(book?: Book, id?: number) => string} */
 export function renderSchema(book, id) {
-	const schema = { "@context": "https://schema.org" };
+	const schema = { '@context': 'https://schema.org' };
 
 	if (!book || !id) {
 		Object.assign(schema, graph);
@@ -63,26 +63,26 @@ export function renderSchema(book, id) {
 	const url = `${BASE_URL}/${book}/${id}/`;
 
 	Object.assign(schema, {
-		"@id": `${url}#work`,
-		"@type": "CreativeWork",
+		'@id': `${url}#work`,
+		'@type': 'CreativeWork',
 		author,
 		copyrightHolder: {
-			"@type": "Person",
+			'@type': 'Person',
 			name: AUTHOR,
 		},
 		copyrightYear,
 		datePublished,
 		headline: title,
-		inLanguage: "ru",
+		inLanguage: 'ru',
 		isPartOf: {
-			"@id": bookId,
-			"@type": "CreativeWorkSeries",
+			'@id': bookId,
+			'@type': 'CreativeWorkSeries',
 			name: BOOKS[book],
 			url: bookId,
 		},
 		mainEntityOfPage: {
-			"@id": url,
-			"@type": "WebPage",
+			'@id': url,
+			'@type': 'WebPage',
 		},
 		name: title,
 		url,

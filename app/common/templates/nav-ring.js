@@ -1,16 +1,16 @@
-import { BOOKS, WORK_DATA } from "#common/constants.js";
+import { BOOKS, WORK_DATA } from '#common/constants.js';
 
 /** @type {(payload: { ampPrefix?: string; pathname?: string; }) => string} */
-export function renderNavRing({ ampPrefix = "", pathname = "" }) {
-	const [, book, rawId] = /** @type {[void, Book, string]} */ (pathname.split("/"));
+export function renderNavRing({ ampPrefix = '', pathname = '' }) {
+	const [, book, rawId] = /** @type {[void, Book, string]} */ (pathname.split('/'));
 	const id = Number(rawId);
-	let next = "/mad/1";
-	let prev = "/dabt/3";
-	let hash = "";
+	let next = '/mad/1';
+	let prev = '/dabt/3';
+	let hash = '';
 
 	if (BOOKS[book]) {
 		/** @type {Book} */
-		const anotherBook = book === "mad" ? "dabt" : "mad";
+		const anotherBook = book === 'mad' ? 'dabt' : 'mad';
 
 		next = id === WORK_DATA[book].length ? `/${anotherBook}/1` : `/${book}/${id + 1}`;
 		prev = id === 1 ? `/${anotherBook}/${WORK_DATA[anotherBook].length}` : `/${book}/${id - 1}`;
@@ -25,7 +25,7 @@ export function renderNavRing({ ampPrefix = "", pathname = "" }) {
 					</a>
 				</li>
 			`
-		: "";
+		: '';
 
 	return /* html */ `
 		<ul class="nav-ring">
@@ -35,7 +35,7 @@ export function renderNavRing({ ampPrefix = "", pathname = "" }) {
 				</a>
 			</li>
 			${
-				pathname === "/"
+				pathname === '/'
 					? mainToc
 					: /* html */ `
 						<li>

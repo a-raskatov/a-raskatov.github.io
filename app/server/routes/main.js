@@ -1,10 +1,10 @@
-import { BOOKS, WORK_DATA } from "#common/constants.js";
-import { ORDER_TEMPLATE } from "#common/templates/order.js";
-import { renderSchema } from "#common/templates/schema.js";
-import { renderToc } from "#common/templates/toc.js";
+import { BOOKS, WORK_DATA } from '#common/constants.js';
+import { ORDER_TEMPLATE } from '#common/templates/order.js';
+import { renderSchema } from '#common/templates/schema.js';
+import { renderToc } from '#common/templates/toc.js';
 
 /** @type {Book[]} */
-const books = ["mad", "dabt"];
+const books = ['mad', 'dabt'];
 
 /** @type {(book: Book, isAmp: boolean) => string} */
 function renderBookToc(book, isAmp) {
@@ -16,8 +16,8 @@ export const mainRoute = {
 	async GET({ isAmp }) {
 		return {
 			page: {
-				description: "Произведения молодого российского литератора эпохи нулевых.",
-				heading: "Андрей Раскатов",
+				description: 'Произведения молодого российского литератора эпохи нулевых.',
+				heading: 'Андрей Раскатов',
 				headTemplate: /* html */ `
 					<meta property="og:type" content="website">
 					<meta name="yandex-verification" content="81c012f87f9f40a8">
@@ -25,8 +25,8 @@ export const mainRoute = {
 					${renderSchema()}
 				`,
 				pageTemplate: /* html */ `
-					${books.map((book) => renderBookToc(book, isAmp)).join("")}
-					${isAmp ? "" : ORDER_TEMPLATE}
+					${books.map((book) => renderBookToc(book, isAmp)).join('')}
+					${isAmp ? '' : ORDER_TEMPLATE}
 					<p class="copyright">© <a class="text-link" href="https://efiand.ru">efiand</a>, разработка сайта, 2025</p>
 				`,
 			},

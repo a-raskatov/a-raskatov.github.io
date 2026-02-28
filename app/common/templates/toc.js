@@ -1,4 +1,4 @@
-function renderItem(title = "", url = "") {
+function renderItem(title = '', url = '') {
 	return /* html */ `
 		<li class="toc__item">
 			<a class="toc__link" href="${url}/">
@@ -9,7 +9,7 @@ function renderItem(title = "", url = "") {
 }
 /** @type {(items: DataItem[], book: Book, isAmp?: boolean) => string} */
 export function renderToc(items, book, isAmp = false) {
-	const template = items.map(({ title }, i) => renderItem(title, `${isAmp ? "/amp" : ""}/${book}/${i + 1}`)).join("");
+	const template = items.map(({ title }, i) => renderItem(title, `${isAmp ? '/amp' : ''}/${book}/${i + 1}`)).join('');
 
 	return /* html */ `<ol class="toc">${template}</ol>`;
 }

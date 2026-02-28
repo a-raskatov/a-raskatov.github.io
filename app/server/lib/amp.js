@@ -3,11 +3,11 @@ const APM_ASSETS_TEMPLATE = /* html */ `
   <script async src="https://cdn.ampproject.org/v0.js"></script>
 `;
 
-let cssCache = "";
+let cssCache = '';
 
 export async function renderAmpAssets() {
 	if (!cssCache) {
-		cssCache = await (await import("../../../src/server/css.js")).getCss("amp/index.css");
+		cssCache = await (await import('../../../src/server/css.js')).getCss('amp/index.css');
 	}
 
 	return /* html */ `

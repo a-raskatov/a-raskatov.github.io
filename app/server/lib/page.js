@@ -1,9 +1,9 @@
-import { BASE_URL, PROJECT_TITLE, version } from "#common/constants.js";
-import { renderLayout } from "#common/templates/layout.js";
-import { renderDocumentTitle } from "#common/templates/title.js";
-import { isDev } from "#server/constants.js";
-import { renderAmpAssets } from "#server/lib/amp.js";
-import { hyphenateRu } from "#server/lib/hyphenate.js";
+import { BASE_URL, PROJECT_TITLE, version } from '#common/constants.js';
+import { renderLayout } from '#common/templates/layout.js';
+import { renderDocumentTitle } from '#common/templates/title.js';
+import { isDev } from '#server/constants.js';
+import { renderAmpAssets } from '#server/lib/amp.js';
+import { hyphenateRu } from '#server/lib/hyphenate.js';
 
 function renderAssets() {
 	const bundles = isDev
@@ -24,17 +24,17 @@ function renderAssets() {
 	`;
 }
 
-function renderUrlMeta(pathname = "", isAmp = false) {
-	if (pathname === "/404.html") {
-		return "";
+function renderUrlMeta(pathname = '', isAmp = false) {
+	if (pathname === '/404.html') {
+		return '';
 	}
 
-	const page = pathname === "/" ? "/" : `${pathname}/`;
+	const page = pathname === '/' ? '/' : `${pathname}/`;
 	const ampUrl = `/amp${page}`;
 
 	return /* html */ `
 		<meta property="og:url" content="${BASE_URL}${isAmp ? ampUrl : page}">
-		${isAmp ? "" : /* html */ `<link rel="ampurl" href="${BASE_URL}${ampUrl}">`}
+		${isAmp ? '' : /* html */ `<link rel="ampurl" href="${BASE_URL}${ampUrl}">`}
 		<link rel="canonical" href="${BASE_URL}${page}">
 	`;
 }
@@ -42,27 +42,27 @@ function renderUrlMeta(pathname = "", isAmp = false) {
 /** @type {(data: LayoutData) => Promise<string>} */
 export async function renderPage({
 	description,
-	heading = "",
-	headTemplate = "",
+	heading = '',
+	headTemplate = '',
 	isAmp = false,
-	pageTemplate = "",
-	pathname = "",
+	pageTemplate = '',
+	pathname = '',
 }) {
-	const ampPrefix = isAmp ? "/amp" : "";
+	const ampPrefix = isAmp ? '/amp' : '';
 	const title = renderDocumentTitle(heading);
 	const assetsTemplate = isAmp ? await renderAmpAssets() : renderAssets();
 	const hyphenatedPageTemplate = await hyphenateRu(pageTemplate);
 
 	/** @type {{ ns: string; type: string }[]} */
-	const prefixes = [{ ns: "", type: "og" }];
-	if (pathname.startsWith("/mad") || pathname.startsWith("/dabt")) {
-		prefixes.push({ ns: "/article", type: "article" });
+	const prefixes = [{ ns: '', type: 'og' }];
+	if (pathname.startsWith('/mad') || pathname.startsWith('/dabt')) {
+		prefixes.push({ ns: '/article', type: 'article' });
 	}
-	const prefixValue = prefixes.map(({ ns, type }) => `${type}: http://ogp.me/ns${ns}#`).join(" ");
+	const prefixValue = prefixes.map(({ ns, type }) => `${type}: http://ogp.me/ns${ns}#`).join(' ');
 
 	return /* html */ `
 		<!DOCTYPE html>
-		<html lang="ru" prefix="${prefixValue}" ${isAmp ? "⚡" : ""}>
+		<html lang="ru" prefix="${prefixValue}" ${isAmp ? '⚡' : ''}>
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
