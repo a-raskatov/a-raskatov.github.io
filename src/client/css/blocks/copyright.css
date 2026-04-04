@@ -1,0 +1,11 @@
+.copyright {
+	margin: 4.5rem 0 0;
+	font-size: 0.75rem;
+	text-align: center;
+}
+
+@media print {
+	.copyright {
+		page-break-before: avoid;
+	}
+}

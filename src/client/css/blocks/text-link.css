@@ -1,0 +1,8 @@
+.text-link {
+	display: inline-block;
+	vertical-align: baseline;
+	margin: 0 -0.25rem;
+	padding: 0 0.25rem;
+	text-indent: 0;
+	color: var(--color-main);
+}
