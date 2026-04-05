@@ -1,7 +1,7 @@
 html {
-	--color-links: #0069ff;
-	--color-sticky-green: #b8e6b3;
-	--color-sticky-yellow: #fdfd96;
+	--color-links: #861a0d;
+	--color-sticky-main: #90bda7;
+	--color-sticky: #edd0c6;
 	--color-text: #0d0d86;
 	--font-sans-serif: "TT Polls", sans-serif;
 	--icon-toc: url("../../../icons/toc.svg");

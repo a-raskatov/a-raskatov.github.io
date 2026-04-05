@@ -19,7 +19,7 @@
 	padding: 0 0.75rem;
 	font-size: 0.8rem;
 	text-decoration: none;
-	background-color: var(--color-sticky-yellow);
+	background-color: var(--color-sticky);
 	border-radius: 0 0 2px 2px;
 	outline: none;
 	box-shadow:
@@ -28,7 +28,7 @@
 }
 
 .nav-ring__link--toc {
-	background-color: var(--color-sticky-green);
+	background-color: var(--color-sticky-main);
 }
 
 .nav-ring__link:focus-visible {
