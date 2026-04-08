@@ -27,5 +27,6 @@ export async function getWorkPage(book, id, description) {
 			</div>
 			<p class="copyright">© Андрей Раскатов, ${year}</p>
 		`,
+		title,
 	};
 }

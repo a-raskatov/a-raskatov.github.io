@@ -1,6 +1,7 @@
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 // @ts-expect-error
+// biome-ignore lint/correctness/noUnresolvedImports: module specific
 import sortMediaQueries from 'postcss-sort-media-queries';
 import postcssUrl from 'postcss-url';
 

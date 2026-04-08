@@ -47,9 +47,10 @@ export async function renderPage({
 	isAmp = false,
 	pageTemplate = '',
 	pathname = '',
+	title = '',
 }) {
 	const ampPrefix = isAmp ? '/amp' : '';
-	const title = renderDocumentTitle(heading);
+	const documentTitle = renderDocumentTitle(title, pathname === '/' ? '' : heading);
 	const assetsTemplate = isAmp ? await renderAmpAssets() : renderAssets();
 	const hyphenatedPageTemplate = await hyphenateRu(pageTemplate);
 
@@ -70,10 +71,10 @@ export async function renderPage({
 			<meta name="apple-mobile-web-app-capable" content="yes">
 			<meta name="mobile-web-app-capable" content="yes">
 
-			<title>${title}</title>
+			<title>${documentTitle}</title>
 			<meta name="description" content="${description}">
 			${renderUrlMeta(pathname, isAmp)}
-			<meta property="og:title" content="${title}">
+			<meta property="og:title" content="${documentTitle}">
 			<meta property="og:description" content="${description}">
 			<meta property="og:locale" content="ru_RU">
 			<meta property="og:site_name" content="${PROJECT_TITLE}">

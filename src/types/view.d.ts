@@ -14,6 +14,7 @@ declare global {
 		isDev?: boolean;
 		pageTemplate?: string;
 		pathname?: string;
+		title?: string;
 	};
 }
 
